@@ -1,6 +1,7 @@
 # openx-task1
 
-Create a data structure which is able to represent the following model (assume that node values
+Create a data structure which is able to represent the following model<br>
+(assume that node values
 are integers).
 
 ![example-tree](https://user-images.githubusercontent.com/105243490/232854988-4051f3b8-6f97-411e-bdad-9d2ffbd975f6.png)
@@ -13,7 +14,7 @@ i.e .: 2, 5, 1, 2, 5
 
 2. Calculating the largest number of edges in a path from the root node<br>
 to a leaf node (node without child). For the example given above<br>
-the largest number of edges between root node and leaf is 4 for the path:
+the largest number of edges between root node and leaf is 4 for the path:<br>
 5 → 7 → 0 → 8 → 5
 
 3. Checking if two instances of above data structures are equivalent to each other.<br>
