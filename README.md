@@ -1,4 +1,4 @@
-# openx-task1
+# OpenX-Task1
 
 Create a data structure which is able to represent the following model<br>
 (assume that node values
