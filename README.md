@@ -7,18 +7,18 @@ are integers).
 
 Taking above data structure, implement features which allow:
 
-1. Calculating the number of nodes that do not have any children.
-For the example given above, there are 5 leafs (nodes without child),
+1. Calculating the number of nodes that do not have any children.<br>
+For the example given above, there are 5 leafs (nodes without child),<br>
 i.e .: 2, 5, 1, 2, 5
 
-2. Calculating the largest number of edges in a path from the root node
-to a leaf node (node without child). For the example given above
+2. Calculating the largest number of edges in a path from the root node<br>
+to a leaf node (node without child). For the example given above<br>
 the largest number of edges between root node and leaf is 4 for the path:
 5 → 7 → 0 → 8 → 5
 
-3. Checking if two instances of above data structures are equivalent to each other.
-Let us assume that two independent instances of the structure described above
-are equivalent if each node (starting from the root) in both of them has the same
+3. Checking if two instances of above data structures are equivalent to each other.<br>
+Let us assume that two independent instances of the structure described above<br>
+are equivalent if each node (starting from the root) in both of them has the same<br>
 value and children.
 
 A desirable part of a given solution is also a set of tests to verify its correctness.
