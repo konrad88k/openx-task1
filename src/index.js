@@ -1,4 +1,4 @@
-class Node {
+export class Node {
     constructor(value) {
         this.value = value;
         this.left = null;
@@ -6,7 +6,7 @@ class Node {
     }
 }
 
-class Tree {
+export class Tree {
     constructor() {
         this.root = null;
     }
