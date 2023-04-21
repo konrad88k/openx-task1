@@ -11,6 +11,7 @@ export class Tree {
         this.root = null;
     }
 
+    // Insert single Node with given value.
     insert(value) {
         const newNode = new Node(value);
         if (!this.root && this.root !== 0) {
@@ -33,17 +34,19 @@ export class Tree {
         }
     }
 
+    // Insert Nodes given in array.
     insertArray(array) {
         for (let i = 0; i < array.length; i++) {
             this.insert(array[i]);
         }
     }
 
-    // 1. Search nodes without children
+    // [P.1] Search all Tree nodes
     // (if searchLeafsMode is true --> returns only leafs).
     depthFirstSearch(searchLeafsMode) {
         let results = [];
         function traverse(node) {
+            if (node === null) return undefined;
             if (node.left || node.left === 0) traverse(node.left);
             if (searchLeafsMode) {
                 if (!node.left && node.left !== 0 && !node.right && node.right !== 0) results.push(node.value);
@@ -56,7 +59,7 @@ export class Tree {
         return results;
     }
 
-    // 2. Find longest path.
+    // [P.2] Find longest path from given node to bottom.
     longestPath(node) {
         if (node === null) {
             let output = [];
@@ -72,6 +75,7 @@ export class Tree {
         return (left.length > right.length ? left : right);
     }
 
+    // Print longestPath output as string with arrows instead of an array.
     pathPrint(node) {
         let output = this.longestPath(node);
         let path = output[0];
@@ -81,6 +85,7 @@ export class Tree {
         return path;
     }
 
+    // Calculate height of given node.
     height(node) {
         if (node === null) {
             return undefined;
@@ -88,7 +93,7 @@ export class Tree {
         return this.longestPath(node).length - 1;
     }
 
-    // 3. Compare two instances of structure.
+    // [P.3] Compare two instances of Tree.
     compareTo(otherTree) {
         let treeA = this.depthFirstSearch(false);
         let treeB = otherTree.depthFirstSearch(false);
@@ -99,25 +104,3 @@ export class Tree {
         return true;
     }
 }
-
-const myTree = new Tree;
-myTree.insertArray([5, 7, 3, 0, 1, 8, 5, 2, 5, 2]);
-
-const treeA = new Tree;
-treeA.insertArray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-
-const treeB = new Tree;
-treeB.insertArray([5, 7, 3, 0, 1, 8, 5, 2, 5, 2, 1]);
-
-const treeC = new Tree;
-treeC.insertArray([5, 7, 3, 0, 1, 8, 5, 2, 5, 2]);
-
-console.log(myTree); // print Tree
-console.log("myTree, height:", myTree.height(myTree.root)); // height of tree
-console.log("myTree, longest path:", myTree.pathPrint(myTree.root)); // print longest path with arrows (edges)
-console.log("myTree, nodes:", myTree.depthFirstSearch(false)); // search all nodes 
-console.log("myTree, leafs:", myTree.depthFirstSearch(true)); // search only leafs
-
-console.log("Compare myTree with treeA:", myTree.compareTo(treeA));
-console.log("Compare myTree with treeB:", myTree.compareTo(treeB));
-console.log("Compare myTree with treeC:", myTree.compareTo(treeC));
