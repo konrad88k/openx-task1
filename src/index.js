@@ -14,16 +14,16 @@ export class Tree {
     // Insert single Node with given value.
     insert(value) {
         const newNode = new Node(value);
-        if (!this.root && this.root !== 0) {
+        if (this.root === null) {
             this.root = newNode;
             return this;
         }
         let temp = this.root;
         while (true) {
-            if (!temp.right && temp.right !== 0) {
+            if (temp.right === null) {
                 temp.right = newNode;
                 return this;
-            } else if (!temp.left && temp.left !== 0) {
+            } else if (temp.left === null) {
                 temp.left = newNode;
                 return this;
             } else if (this.height(temp.right) - this.height(temp.left) < 2) {
@@ -41,15 +41,15 @@ export class Tree {
         }
     }
 
-    // [P.1] Search all Tree nodes
-    // (if searchLeafsMode is true --> returns only leafs).
-    depthFirstSearch(searchLeafsMode) {
+    // [#1] Search all Tree nodes with DFS method (InOrder)
+    // Search only leaf nodes (without any children) when argument is set on 'true'.
+    depthFirstSearch(onlyLeaves = false) {
         let results = [];
         function traverse(node) {
             if (node === null) return undefined;
             if (node.left || node.left === 0) traverse(node.left);
-            if (searchLeafsMode) {
-                if (!node.left && node.left !== 0 && !node.right && node.right !== 0) results.push(node.value);
+            if (onlyLeaves) {
+                if (node.left === null && node.right === null) results.push(node.value);
             } else {
                 results.push(node.value);
             }
@@ -59,7 +59,7 @@ export class Tree {
         return results;
     }
 
-    // [P.2] Find longest path from given node to bottom.
+    // [#2] Find longest path from given node to bottom.
     longestPath(node) {
         if (node === null) {
             let output = [];
@@ -68,24 +68,25 @@ export class Tree {
         let right = this.longestPath(node.right);
         let left = this.longestPath(node.left);
         if (right.length < left.length) {
-            left.unshift(node.value)
+            left.push(node.value)
         } else {
-            right.unshift(node.value)
+            right.push(node.value)
         }
         return (left.length > right.length ? left : right);
     }
 
     // Print longestPath output as string with arrows instead of an array.
+    // Print values starting from last element of given array.
     pathPrint(node) {
         let output = this.longestPath(node);
-        let path = output[0];
-        for (let i = 1; i < output.length; i++) {
+        let path = output[output.length - 1];
+        for (let i = output.length - 2; i >= 0; i--) {
             path = path + " -> " + output[i];
         }
         return path;
     }
 
-    // Calculate height of given node.
+    // Calculate height of a given node.
     height(node) {
         if (node === null) {
             return undefined;
@@ -93,7 +94,7 @@ export class Tree {
         return this.longestPath(node).length - 1;
     }
 
-    // [P.3] Compare two instances of Tree.
+    // [#3] Compare two instances of Tree.
     compareTo(otherTree) {
         let treeA = this.depthFirstSearch(false);
         let treeB = otherTree.depthFirstSearch(false);
