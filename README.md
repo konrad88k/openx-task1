@@ -1,19 +1,3 @@
-# OpenX-Task1
-
-## Setup
-
-To run this project, install it locally using npm:
-
-```
-$ cd ../project
-$ npm install
-$ npm run start
-```
-
-To run test, type: `npm run test`
-
-To build project inside of `project/build` folder, type: `npm run build`
-
 ## Task description
 
 Create a data structure which is able to represent the following model<br>
@@ -39,3 +23,17 @@ Taking above data structure, implement features which allow:
    value and children.
 
 A desirable part of a given solution is also a set of tests to verify its correctness.
+
+## Setup
+
+To run this project, install it locally using npm:
+
+```
+$ cd ../project
+$ npm install
+$ npm run start
+```
+
+To run test, type: `npm run test`
+
+To build project inside of `project/build` folder, type: `npm run build`
